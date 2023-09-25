@@ -1,0 +1,6 @@
+/ {
+    sdl_dc: sdl_dc {
+      height = <240>;
+      width = <320>;
+    };
+};

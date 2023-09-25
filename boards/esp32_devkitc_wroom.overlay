@@ -1,0 +1,33 @@
+/ {
+	chosen {
+		zephyr,display = &ili9341;
+	};
+};
+
+/* zephyrproject/zephyr/boards/xtensa/esp32_devkitc_wroom/esp32_devkitc_wroom-pinctrl.dtsi */
+
+&pinctrl {
+	spim2_default {
+		group1 {
+			pinmux = <SPIM2_MISO_GPIO12>,
+				 <SPIM2_SCLK_GPIO14>,
+				 <SPIM2_CSEL_GPIO15>;
+		};
+		group2 {
+			pinmux = <SPIM2_MOSI_GPIO13>;
+			output-low;
+		};
+	};
+};
+
+&spi2 {
+    ili9341: ili9341@0 {
+		compatible = "ilitek,ili9341";
+		spi-max-frequency = <25000000>;
+		reg = <0>;
+		reset-gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
+		cmd-data-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
+		width = <240>;
+		height = <320>;
+	};
+};
